@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
 		mainItens.add(new MainItem(2,R.drawable.ic_baseline_transfer_within_a_station_24, R.string.label_tmb, ContextCompat.getColor(this, R.color.colorAccent)));
 
 		rvMain = findViewById(R.id.rv_main);
-//		rvMain.setLayoutManager(new GridLayoutManager(this,2));
-		rvMain.setLayoutManager(new LinearLayoutManager(this));
+		rvMain.setLayoutManager(new GridLayoutManager(this,2));
+//		rvMain.setLayoutManager(new LinearLayoutManager(this));
 
 		MainAdapter adapter = new MainAdapter(mainItens);
 		rvMain.setAdapter(adapter);
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 		public void bind(MainItem item) {
-			LinearLayout container = (LinearLayout) itemView;
+			LinearLayout container = (LinearLayout) itemView.findViewById(R.id.btn_imc);
 			ImageView imgIcon = itemView.findViewById(R.id.item_img_icon);
 			TextView txtName = itemView.findViewById(R.id.item_txt_name);
 

@@ -38,6 +38,20 @@ public class MainActivity extends AppCompatActivity {
 //		rvMain.setLayoutManager(new LinearLayoutManager(this));
 
 		MainAdapter adapter = new MainAdapter(mainItens);
+
+		adapter.setListener(id -> {
+			switch (id) {
+				case 1:
+					//Intent it = new Intent(getBaseContext(), ImcActivity.class);
+					startActivity(new Intent(MainActivity.this, ImcActivity.class));
+					break;
+				case 2:
+					//Intent it = new Intent(getBaseContext(), ImcActivity.class);
+					startActivity(new Intent(getBaseContext(), TmbActivity.class));
+					break;
+			}
+		});
+
 		rvMain.setAdapter(adapter);
 
 
@@ -52,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 	private class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
 
 		private List<MainItem> mainItens = new ArrayList<>();
+		private OnItemClickListener listener;
 
 		public MainAdapter(List<MainItem> mainItems) {
 			this.mainItens = mainItems;
@@ -63,10 +78,14 @@ public class MainActivity extends AppCompatActivity {
 			return new MainViewHolder(getLayoutInflater().inflate(R.layout.main_item, parent, false));
 		}
 
+		public void setListener(OnItemClickListener listener) {
+			this.listener = listener;
+		}
+
 		@Override
 		public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
 			MainItem mainItemCurrent = mainItens.get(position);
-			holder.bind(mainItemCurrent);
+			holder.bind(mainItemCurrent, listener);
 		}
 
 		@Override
@@ -82,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 			super(itemView);
 		}
 
-		public void bind(MainItem item) {
+		public void bind(MainItem item, OnItemClickListener listener) {
 			LinearLayout container = (LinearLayout) itemView.findViewById(R.id.btn_imc);
 			ImageView imgIcon = itemView.findViewById(R.id.item_img_icon);
 			TextView txtName = itemView.findViewById(R.id.item_txt_name);
@@ -91,18 +110,19 @@ public class MainActivity extends AppCompatActivity {
 			imgIcon.setImageResource(item.getDesenhavelId());
 			txtName.setText(item.getTextStringId());
 
-			/*
 			container.setOnClickListener(view -> {
-				Intent it = new Intent(getBaseContext(), ImcActivity.class);
-				startActivity(it);
+				listener.onClick(item.getId());
+				/*Intent it = new Intent(getBaseContext(), ImcActivity.class);
+				startActivity(it);*/
 			});
-			*/
 
 			 //Maneira mais fácil
+			/*
 			container.setOnClickListener(v -> {
 				if (item.getId() == 1)  startActivity(new Intent(getApplicationContext(), ImcActivity.class));
 				if (item.getId() == 2)  startActivity(new Intent(getApplicationContext(), TmbActivity.class));
 			});
+			*/
 		}
 	}
 }

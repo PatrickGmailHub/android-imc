@@ -1,5 +1,6 @@
 package co.tiagoaguiar.codelab.myapplication;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -89,6 +90,19 @@ public class MainActivity extends AppCompatActivity {
 			container.setBackgroundColor(item.getCor());
 			imgIcon.setImageResource(item.getDesenhavelId());
 			txtName.setText(item.getTextStringId());
+
+			/*
+			container.setOnClickListener(view -> {
+				Intent it = new Intent(getBaseContext(), ImcActivity.class);
+				startActivity(it);
+			});
+			*/
+
+			 //Maneira mais fácil
+			container.setOnClickListener(v -> {
+				if (item.getId() == 1)  startActivity(new Intent(getApplicationContext(), ImcActivity.class));
+				if (item.getId() == 2)  startActivity(new Intent(getApplicationContext(), TmbActivity.class));
+			});
 		}
 	}
 }

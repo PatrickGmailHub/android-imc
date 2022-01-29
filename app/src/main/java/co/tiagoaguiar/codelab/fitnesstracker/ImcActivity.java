@@ -51,9 +51,15 @@ public class ImcActivity extends AppCompatActivity {
                         .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
                         })
                         .setNegativeButton(R.string.save, ((dialog1, which) -> {
-                            long calcId = SqlHelper.getInstance(ImcActivity.this).addItem("imc", res);
-                            if (calcId > 0)
-                                Toast.makeText(ImcActivity.this, R.string.calc_saved, Toast.LENGTH_SHORT).show();
+
+                            new Thread(() -> {
+                                long calcId = SqlHelper.getInstance(ImcActivity.this).addItem("imc", res);
+                                runOnUiThread(() -> {
+                                    if (calcId > 0)
+                                        Toast.makeText(ImcActivity.this, R.string.calc_saved, Toast.LENGTH_SHORT).show();
+                                });
+                            }).start();
+
                         }))
                         .create();
 

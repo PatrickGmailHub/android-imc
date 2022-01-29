@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name="co.tiagoaguiar.codelab.fitnesstracker.ListCalcActivity"
+            android:exported="false" />
+        <activity
             android:name="co.tiagoaguiar.codelab.fitnesstracker.TmbActivity"
             android:exported="false" />
         <activity

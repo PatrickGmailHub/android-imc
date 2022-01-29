@@ -2,6 +2,7 @@ package co.tiagoaguiar.codelab.fitnesstracker;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -9,8 +10,12 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
+import co.tiagoaguiar.codelab.myapplication.R;
 
 public class SqlHelper extends SQLiteOpenHelper {
 
@@ -41,6 +46,34 @@ public class SqlHelper extends SQLiteOpenHelper {
         Log.d("TESTE", "on Upgrade disparado");
     }
 
+    List<Registro> getRegistroList(String type) {
+        List<Registro> registros = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM calc WHERE type_calc = ?", new String[]{type});
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    Registro registro = new Registro();
+
+                    registro.type = cursor.getString(cursor.getColumnIndex("type_calc"));
+                    registro.response = cursor.getDouble(cursor.getColumnIndex("res"));
+                    registro.createdDate = cursor.getString(cursor.getColumnIndex("created_date"));
+
+                    registros.add(registro);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.e("SQLite", e.getMessage(), e);
+        } finally {
+            if (cursor != null && !cursor.isClosed())
+                cursor.close();
+        }
+
+        return registros;
+    }
+
     long addItem(String type, double response) {
         SQLiteDatabase db = getWritableDatabase();
 
@@ -67,7 +100,6 @@ public class SqlHelper extends SQLiteOpenHelper {
             if(db.isOpen())
                 db.endTransaction();
         }
-
         return calcId;
     }
 }

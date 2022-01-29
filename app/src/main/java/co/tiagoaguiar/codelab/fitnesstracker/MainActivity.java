@@ -1,7 +1,6 @@
-package co.tiagoaguiar.codelab.myapplication;
+package co.tiagoaguiar.codelab.fitnesstracker;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import co.tiagoaguiar.codelab.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 

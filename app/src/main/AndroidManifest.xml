@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TmbActivity"
+            android:name="co.tiagoaguiar.codelab.fitnesstracker.TmbActivity"
             android:exported="false" />
         <activity
-            android:name=".ImcActivity"
+            android:name="co.tiagoaguiar.codelab.fitnesstracker.ImcActivity"
             android:exported="false" />
-        <activity android:name=".MainActivity">
+        <activity android:name="co.tiagoaguiar.codelab.fitnesstracker.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

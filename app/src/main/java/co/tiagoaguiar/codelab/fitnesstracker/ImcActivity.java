@@ -1,11 +1,10 @@
-package co.tiagoaguiar.codelab.myapplication;
+package co.tiagoaguiar.codelab.fitnesstracker;
 
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +12,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import co.tiagoaguiar.codelab.myapplication.R;
 
 public class ImcActivity extends AppCompatActivity {
 
@@ -49,10 +50,16 @@ public class ImcActivity extends AppCompatActivity {
                         .setMessage(imcRespostaId)
                         .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
                         })
+                        .setNegativeButton(R.string.save, ((dialog1, which) -> {
+                            long calcId = SqlHelper.getInstance(ImcActivity.this).addItem("imc", res);
+                            if (calcId > 0)
+                                Toast.makeText(ImcActivity.this, R.string.calc_saved, Toast.LENGTH_SHORT).show();
+                        }))
                         .create();
 
                 dialog.show();
 
+                //Controle do teclado
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(editAltura.getWindowToken(),0);
                 imm.hideSoftInputFromWindow(editPeso.getWindowToken(),0);

@@ -1,5 +1,6 @@
 package co.tiagoaguiar.codelab.fitnesstracker;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -59,9 +62,7 @@ public class ImcActivity extends AppCompatActivity {
                                         Toast.makeText(ImcActivity.this, R.string.calc_saved, Toast.LENGTH_SHORT).show();
 
                                         //Depois de salvar mudar para listagem dos dados!
-                                        Intent it = new Intent(getBaseContext(), ListCalcActivity.class);
-                                        it.putExtra("type", "imc");
-                                        startActivity(it);
+                                        openListCalcActivity();
                                     }
                                 });
                             }).start();
@@ -78,6 +79,28 @@ public class ImcActivity extends AppCompatActivity {
                 Log.d("IMC", "resultado: " + res);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+        //return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menu_list) {
+            openListCalcActivity();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void openListCalcActivity() {
+        Intent it = new Intent(getBaseContext(), ListCalcActivity.class);
+        it.putExtra("type", "imc");
+        startActivity(it);
     }
 
     @StringRes

@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="co.tiagoaguiar.codelab.fitnesstracker.TmbActivity">
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center"
+        tools:context="co.tiagoaguiar.codelab.fitnesstracker.ImcActivity">
+
+        <TextView
+            android:text="@string/tmb_desc_desc"
+            style="@style/TextViewFormImc"
+            />
+
+        <EditText
+            android:id="@+id/edit_tmb_peso"
+            android:hint="Peso (Kg)"
+            style="@style/EditTextFormImc"
+            />
+
+        <EditText
+            android:id="@+id/edit_tmb_altura"
+            android:hint="Altura (cm)"
+            style="@style/EditTextFormImc"
+            />
+
+        <EditText
+            android:id="@+id/edit_tmb_idade"
+            android:hint="Idade"
+            style="@style/EditTextFormImc"
+            />
+
+        <Spinner
+            android:id="@+id/spinner_tmb_lifestyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/tmb_lifestyle"
+            style="@style/SpinnerForm"
+            />
+
+        <Button
+            android:id="@+id/btn_tmb_calcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calcular"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_btn_accent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            />
+    </LinearLayout>
+</ScrollView>

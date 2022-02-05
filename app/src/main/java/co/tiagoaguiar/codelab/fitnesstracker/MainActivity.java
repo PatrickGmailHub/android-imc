@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.tiagoaguiar.codelab.myapplication.R;
+import co.tiagoaguiar.codelab.fitnesstracker.R;
 
 public class MainActivity extends AppCompatActivity {
 

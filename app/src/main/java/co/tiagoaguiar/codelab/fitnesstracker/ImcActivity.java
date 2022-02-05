@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import co.tiagoaguiar.codelab.myapplication.R;
+import co.tiagoaguiar.codelab.fitnesstracker.R;
 
 public class ImcActivity extends AppCompatActivity {
 
@@ -49,7 +49,7 @@ public class ImcActivity extends AppCompatActivity {
 
                 int imcRespostaId = imcResposta(res);
 
-                AlertDialog dialog = new AlertDialog.Builder(ImcActivity.this)
+                AlertDialog dialog = new AlertDialog.Builder(getBaseContext())
                         .setTitle(getString(R.string.imc_resposta, res))
                         .setMessage(imcRespostaId)
                         .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {

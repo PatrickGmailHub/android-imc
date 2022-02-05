@@ -22,4 +22,6 @@
     <string name="delete_message">Você realmente quer excluir o registro?</string>
     <string name="cancel">Cancelar</string>
     <string name="imc_resposta">Imc: %1$.2f</string>
+    <string name="tmb_resposta">Tmb: %1$.2f</string>
+    <string name="tmb_desc_desc">TMB é o cálculo para descobrir a quantidade calórico que o corpo necessecita com base no seu estilo de vida</string>
 </resources>

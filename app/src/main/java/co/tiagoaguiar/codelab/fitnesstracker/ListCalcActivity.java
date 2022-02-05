@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import co.tiagoaguiar.codelab.myapplication.R;
+import co.tiagoaguiar.codelab.fitnesstracker.R;
 
 public class ListCalcActivity extends AppCompatActivity {
 

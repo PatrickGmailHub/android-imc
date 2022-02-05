@@ -1,4 +1,4 @@
-package co.tiagoaguiar.codelab.myapplication;
+package co.tiagoaguiar.codelab.fitnesstracker;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
 	public void useAppContext() {
 		// Context of the app under test.
 		Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-		assertEquals("co.tiagoaguiar.codelab.myapplication", appContext.getPackageName());
+		assertEquals("co.tiagoaguiar.codelab.fitnesstracker", appContext.getPackageName());
 	}
 }

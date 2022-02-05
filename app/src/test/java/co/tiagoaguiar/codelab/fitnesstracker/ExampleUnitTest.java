@@ -1,4 +1,4 @@
-package co.tiagoaguiar.codelab.myapplication;
+package co.tiagoaguiar.codelab.fitnesstracker;
 
 import org.junit.Test;
 
